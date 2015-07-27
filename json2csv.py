@@ -7,6 +7,9 @@ import sys
 def json_to_csv(input_file_path, output_file_path):
     with open(input_file_path) as input_file:
         json = input_file.read()
+    lastChar = json[-1]
+    if ( lastChar != ']'):
+        json += "]"    
     dicts = json_to_dicts(json)    
     with open(output_file_path, "w") as output_file:
         dicts_to_csv(dicts, output_file)
